@@ -1,0 +1,55 @@
+name: Deploy to GitHub Pages
+
+# Validate the curriculum data, then publish the static site to GitHub Pages.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Least-privilege token: read the repo, write the Pages deployment.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment; let an in-progress run finish.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    name: Validate curriculum
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Validate curriculum data
+        run: node scripts/validate-curriculum.js
+
+  deploy:
+    name: Build & deploy
+    needs: validate
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      # Stage only the files the running app needs — keep dev/config dirs
+      # (.claude, docs, plans, scripts, .github) off the public site.
+      - name: Stage site
+        run: |
+          mkdir -p _site
+          cp -r index.html favicon.svg css js screens _site/
+          touch _site/.nojekyll
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@v4
