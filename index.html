@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RustQuest — Learn Rust from Zero to Hero</title>
+  <meta name="description" content="RustQuest — a gamified, hands-on course that takes you from zero to Rust hero through nine realms of interactive lessons." />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Space+Grotesk:wght@400;500;600;700&family=Fira+Code:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="app-bg">
+  <div id="root"></div>
+
+  <!-- React + Babel (pinned) -->
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <!-- plain JS: highlighter -->
+  <script src="js/highlight.js"></script>
+
+  <!-- plain JS: curriculum data (core defines RUSTQUEST; realms append in order) -->
+  <script src="js/curriculum-core.js"></script>
+  <script src="js/realms/realm-1-first-steps.js"></script>
+  <script src="js/realms/realm-2-ownership.js"></script>
+  <script src="js/realms/realm-3-structs-enums.js"></script>
+  <script src="js/realms/realm-4-collections-errors.js"></script>
+  <script src="js/realms/realm-5-traits-generics.js"></script>
+  <script src="js/realms/realm-6-fearless-concurrency.js"></script>
+  <script src="js/realms/realm-7-closures-iterators.js"></script>
+  <script src="js/realms/realm-8-smart-pointers.js"></script>
+  <script src="js/realms/realm-9-modules-testing.js"></script>
+  <script src="js/realms/realm-10-advanced-traits.js"></script>
+  <script src="js/realms/realm-11-macros-unsafe.js"></script>
+  <script src="js/realms/realm-12-async-real-world.js"></script>
+
+  <!-- React components (order matters: icons declares shared hook bindings) -->
+  <script type="text/babel" src="js/icons.jsx"></script>
+  <script type="text/babel" src="js/ui.jsx"></script>
+  <script type="text/babel" src="js/playground.jsx"></script>
+  <script type="text/babel" src="js/quiz.jsx"></script>
+  <script type="text/babel" src="js/store.jsx"></script>
+  <script type="text/babel" src="js/views.jsx"></script>
+  <script type="text/babel" src="js/lesson.jsx"></script>
+  <script type="text/babel" src="js/app.jsx"></script>
+</body>
+</html>
