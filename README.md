@@ -5,6 +5,8 @@ lessons** of interactive content — read, run simulated code, fill in blanks,
 take quizzes, earn XP, climb levels, and unlock badges. Progress is saved
 locally in the browser.
 
+**▶ Live:** https://tranhuuhuy297.github.io/rustquest/
+
 ![Quest Map — the path from zero to hero](screens/quest-map.png)
 
 ## Running it
@@ -22,6 +24,16 @@ python3 -m http.server 9101
 ```
 
 Any static server works (`npx serve -l 9101`, `php -S localhost:9101`, etc.).
+
+## Deployment
+
+The site auto-deploys to **GitHub Pages** on every push to `main` via
+[`.github/workflows/deploy-pages.yml`](.github/workflows/deploy-pages.yml). The
+workflow first runs `node scripts/validate-curriculum.js` as a quality gate,
+then publishes the app files (`index.html`, `css/`, `js/`, `favicon.svg`,
+`screens/`) — dev/config dirs are excluded. A `.nojekyll` file disables Jekyll
+so every asset is served verbatim. You can also re-run it manually from the
+Actions tab (`workflow_dispatch`).
 
 ## Features
 
